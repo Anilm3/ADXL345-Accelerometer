@@ -1,4 +1,4 @@
-ADXL345_Arduino_Library
+ADXL345
 =======================
 
-ADXL345 Arduino Library
+ADXL345 Accelerometer Arduino Library
