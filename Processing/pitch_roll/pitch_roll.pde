@@ -28,7 +28,7 @@ void draw ()
 
 	//Rotate
 	rotateX(((float)pitch)*PI/180.0); 
-	rotateZ(((float)-roll)*PI/180.0); 
+	rotateZ(((float)roll)*PI/180.0); 
 
 	//Print data
 	print("Pitch: ");
