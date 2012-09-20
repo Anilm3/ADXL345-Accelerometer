@@ -1,7 +1,7 @@
 #ifndef _ADXL345_H
 #define _ADXL345_H
 
-#include <Arduino.h> 
+#include <Arduino.h>
 
 /* ADXL345 Registers */
 #define ADXL345_DEVID			0x00
@@ -40,17 +40,30 @@
 // All functions return -1 on error and 0 on success
 class ADXL345
 {
-	int zG[3];
-	int readRegister(byte reg_addr, int nbytes, byte *buffer);
-	int writeRegister(byte reg_addr, int nbytes, byte *buffer);
+	private:
+		int zG[3];
+		int readRegister(byte reg_addr, int nbytes, byte *buffer);
+		int writeRegister(byte reg_addr, int nbytes, byte *buffer);
 	
 	public:
-	ADXL345();
-	void begin();
-	void read(double *x, double *y, double *z);
-	void end();
 	
-	void setZeroG(double x, double y, double z);
+		ADXL345();
+	
+		void begin();
+		void end();
+	
+		//G Reading
+		void read(double *x, double *y, double *z);
+	
+		//Raw reading
+		void read(int *x, int *y, int *z);
+	
+	
+		//Unit must be G
+		void setZeroG(double x, double y, double z);
+	
+		//Unit must be "Raw"
+		void setZeroG(int x, int y, int z);
 };
 
 #endif // _ADXL345_H

@@ -1,5 +1,5 @@
-#include <Wire.h>
 #include <ADXL345.h>
+#include <Wire.h>"
 
 int ADXL345::writeRegister(byte reg_addr, int nbytes, byte *buffer)
 {
@@ -37,7 +37,7 @@ ADXL345::ADXL345()
 	
 	zG[0] = -20;
 	zG[1] =  15;
-	zG[2] = -23}
+	zG[2] = -23;
 }
 
 void ADXL345::begin()
@@ -58,16 +58,33 @@ void ADXL345::read(double *x, double *y, double *z)
 	*z = ((buffer[4] + (buffer[5] << 8)) - zG[2])/256.0;
 }
 
+void ADXL345::read(int *x, int *y, int *z)
+{
+	byte buffer[6];
+
+	readRegister(ADXL345_DATAX0, 6, buffer);
+	
+	*x = buffer[0] + (buffer[1] << 8);
+	*y = buffer[2] + (buffer[3] << 8);
+	*z = buffer[4] + (buffer[5] << 8);
+}
+
 void ADXL345::end()
 {
 	byte data = 0x00;
 	writeRegister(ADXL345_POWER_CTL, 1, &data);
 }
 
-void setZeroG(double x, double y, double z)
+void ADXL345::setZeroG(double x, double y, double z)
 {
 	zG[0] = x*256.0;
 	zG[1] = y*256.0;
 	zG[2] = z*256.0;
 }
 
+void ADXL345::setZeroG(int x, int y, int z)
+{
+	zG[0] = x;
+	zG[1] = y;
+	zG[2] = z;
+}
