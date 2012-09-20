@@ -1,3 +1,14 @@
+/********************************************************************************
+* ADXL345 Library Examples- pitch_roll.ino                                      *
+*                                                                               *
+* Copyright (C) 2012 Anil Motilal Mahtani Mirchandani(anil.mmm@gmail.com)       *
+*                                                                               *
+* License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html> *
+* This is free software: you are free to change and redistribute it.            *
+* There is NO WARRANTY, to the extent permitted by law.                         *
+*                                                                               *
+*********************************************************************************/
+
 #include <Wire.h>
 #include <ADXL345.h>
 
