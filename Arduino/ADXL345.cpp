@@ -46,6 +46,11 @@ void ADXL345::begin()
 	writeRegister(ADXL345_POWER_CTL, 1, &data);
 }
 
+void ADXL345::end()
+{
+	byte data = 0x00;
+	writeRegister(ADXL345_POWER_CTL, 1, &data);
+}
 
 void ADXL345::read(double *x, double *y, double *z)
 {
@@ -69,11 +74,6 @@ void ADXL345::read(int *x, int *y, int *z)
 	*z = buffer[4] + (buffer[5] << 8);
 }
 
-void ADXL345::end()
-{
-	byte data = 0x00;
-	writeRegister(ADXL345_POWER_CTL, 1, &data);
-}
 
 void ADXL345::setZeroG(double x, double y, double z)
 {
